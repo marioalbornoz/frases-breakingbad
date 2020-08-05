@@ -1,12 +1,14 @@
 import React from 'react';
 import '../components/styled.css'
 import { useFetch } from '../hooks/useFetch';
+import useCounter from '../hooks/useCounter';
 
 
 const MultipleCustomHook = () => {
-    const {loading, data} = useFetch(`https://www.breakingbadapi.com/api/quotes/1`);
+
+    const {count, increment} =useCounter(1);
+    const {loading, data} = useFetch(`https://www.breakingbadapi.com/api/quotes/${count}`);
     const {author, quote} = !!data && data[0];
-    console.log(author, quote);
     return (
         <div>
             <h1>Custom hooks!!</h1>
@@ -21,11 +23,14 @@ const MultipleCustomHook = () => {
                 (
                     <blockquote>
                         <p>{quote}</p>
-                        <footer>{author} </footer>
+                        <footer>"{author}"</footer>
                     </blockquote>
                 )
 
             }
+            <button
+                onClick = {increment}
+                >Siguiente</button>
             
         </div>
        
