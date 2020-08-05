@@ -30,7 +30,8 @@ const MultipleCustomHook = () => {
             }
             <button
                 onClick = {increment}
-                >Siguiente</button>
+                >Siguiente
+            </button>
             
         </div>
        
